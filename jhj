@@ -1,0 +1,26 @@
+from vkbottle import Bot, Message, VKError, keyboard_gen
+ 
+bot_token = ''
+bot_group_id = ид группы
+bot = Bot(bot_token, bot_group_id, debug=True, log_to_file=False)
+ 
+@bot.on.message_both('Привет', lower=True)
+async def hello(ans: Message):
+    await ans(f'Привет!')
+ 
+@bot.on.message_both('Фотография', lower=True)
+async def hello(ans: Message):
+    await ans(f'Воу! Вложения?', attachment='photo-172005511_457239065')
+ 
+@bot.on.message_both('Клавиатура', lower=True)
+async def hello(ans: Message):
+    name_buttons = [[{'text': f'1 строчка 1 кнопка'},
+                    {'text': f'1 строчка 2 кнопка', 'color': 'positive'},
+                    {'text': f'1 строчка 3 кнопка'}],
+                    [{'text': f'2 строчка 1 кнопка'},
+                    {'text': f'2 строчка 2 кнопка', 'color': 'primary'}]]
+    name_keyboard = keyboard_gen(name_buttons, one_time=False)
+    await ans(f'Клавиатура:', keyboard=name_keyboard)
+ 
+ 
+bot.run_polling() #Запуск бота
