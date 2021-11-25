@@ -1,7 +1,7 @@
 from vkbottle import Bot, Message, VKError, keyboard_gen
  
-bot_token = ''
-bot_group_id = ид группы
+bot_token = '3dc507ab92ffa01ff8bcad1f0cbd915c87f1eedb30ddfe58202e17cad410a092c812ddf5a5a538abdca4f'
+bot_group_id = 204077562
 bot = Bot(bot_token, bot_group_id, debug=True, log_to_file=False)
  
 @bot.on.message_both('Привет', lower=True)
